@@ -14,24 +14,43 @@ using namespace std;
 
 int main(){
 	
-	//The following section will define all the variables
+	//The following section will define all the variables or ask the user to define them
 	
-	int range = 100; //The range of numbers (from 1 to this number)
-	int number = rand() % range; //The random number generation
+	int guesses; //The number of guesses the user gets
+	cout << "Number of Guesses? ";
+        cin >> guesses;
+	int minimum; //The minimum random number
+	cout << "Minimum Number? ";
+	cin >> minimum;
+	int maximum; //The maximum random number
+	cout << "Maximum Number? ";
+	cin >> maximum;
+	int number = rand() % (maximum - minimum + 1) + minimum; //The random number generation
 	float guess; //The guess, defined as a float because it allows for binary search guessing.
 	
-	while (true) {
+	for (int i = 0; i < guesses; i++) {
+
+		//The following section takes user input
+
 		cout << "Guess? "; //Prompt the user for their guess
 		cin >> guess; //Save the guess
-		cout << endl; //Write a new line
 
-		if (guess > number) {
+		//The following section anylizes the user input and gives output
+
+		if (guess > number) { 
 			cout << "Too high!" << endl;
-		}else if (guess < number) {
+		}
+		else if (guess < number)
+		{
 			cout << "Too Low!" << endl;
-		}else if (guess == number) {
+		}
+		else if (guess == number)
+		{
 			cout << "You got it!" << endl;
 			exit(0);
 		}
+	}
+	if (guess != number) {
+		cout << "Better luck next time!" << endl;
 	}
 }
