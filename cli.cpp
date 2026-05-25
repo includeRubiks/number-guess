@@ -51,7 +51,7 @@ void input() {
 	guess = promptuserint("What is your guess? "); //Prompt the user for their guess
 }
 
-void analyze() {
+int analyze() {
 	//The following section analyzes the user input and gives the result
 	if (guess > number) {
 		cout << "The guess is too high! " << endl;
@@ -63,14 +63,27 @@ void analyze() {
 	else if (guess == number)
 	{
 		cout << "You got it!" << endl;
-		exit(0);
+		return 2;
 	}
+	return 0;
 }
 
 int main(){
-	define();
-	for (int i = 0; i < guesses; i++) {
-		input();
-		analyze();
+	while (true) {
+		define();
+		for (int i = 0; i < guesses; i++) {
+			input();
+			if (analyze() == 2) { //If the analyze function returns 2, which it does when the user is successful, it will break the loop and ask if the user wants to play again.
+				break;
+			}
+		}
+		if (guess != number) {
+			cout << "You ran out of guesses!" << endl;
+		}
+		
+		if (promptuserint("Do you want to play again? (1 for yes, anything else for no) ") != 1) {
+			break;
+		}
 	}
+	cout << "Goodbye!" << endl;
 }
