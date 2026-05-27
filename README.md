@@ -8,3 +8,6 @@ Day Two: Very big day! Many improvements were made. First off, I began using cla
 TODO Tommorow: Add a looping feature and support for flags in the terminal.  
 Also on day two: I started making pixel art for the eventual GUI of this game. Feel free to submit a pull request or email me with art!  
 Day Three: I decided support for flags would be too hard to implement for too little use, and I want to focus on the SDL3 part of this more. Added a looping feauture! Also decided to have the CLI version named cli.cpp and gui named gui.cpp
+
+## Compiling
+On linux, use g++ gui.cpp or cli.cpp $(pkg-config --cflags --libs sdl3) 
