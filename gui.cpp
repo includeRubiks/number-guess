@@ -31,10 +31,12 @@ int main() {
 
     if (!resources.window) { //Check if the window exists. If it does not, show an error box.
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "The SDL3 window has failed to initialize. Please look at your code and installation, and then file an issue if it's an error with my code.", resources.window);
+        return 1;
     }
 
     if (!resources.renderer) { //Check if the renderer exists. If it does not, show an error box.
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "The SDL3 renderer has failed to initialize. Please look at your code and installation, and then file an issue if it's an error with my code.", resources.window);
+        return 1;
     }
 
     bool running = true; //The variable that is set to false to exit the loop
@@ -56,7 +58,7 @@ int main() {
 }
 
 void cleanup(resources resources) { //The cleanup function. This is pretty self-explanatory.
-    SDL_DestroyWindow(resources.window);
     SDL_DestroyRenderer(resources.renderer);
+    SDL_DestroyWindow(resources.window);
     SDL_Quit();
 }
