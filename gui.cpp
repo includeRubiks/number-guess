@@ -51,7 +51,9 @@ int main() {
                     }
                 }
             }
-        
+        SDL_SetRenderDrawColor(resources.renderer, 255, 0, 0, 255); //Set the draw color to red
+        SDL_RenderClear(resources.renderer); //Clear the screen with the draw color
+        SDL_RenderPresent(resources.renderer); //Present the renderer's image
     }
 
     cleanup(resources);
